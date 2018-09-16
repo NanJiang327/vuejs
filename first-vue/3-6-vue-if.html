@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Vue JS Todo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="vue.js"></script>
+  <style>
+    .activated {
+      color: yellowgreen;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"> 
+    <div v-if="display"> Hello World - Vif Ture </div>
+    <div v-else-if="display2">Hello World - V if else</div>
+    <div v-else>V if - False</div>
+    <div v-show="display">Hello World - VShow</div>
+    <button @click="handleDisplay">Display</button>
+    <div v-if="display">
+      Username: 
+      <input type="text" :key="username">
+    </div>
+    <div v-else>
+      Email:
+      <input type="text" :key="email">
+    </div>
+    <template v-if="display">
+      <h1>V template</h1>
+      <p>If use template element to wrap elements then there is no template wrapper</p>
+    </template>
+    <ul>
+      <!-- For 比 if 有着更高的优先级 -->
+      <li v-for="item in items" :key="item.id" v-if="typeof item === 'number'">
+        {{ item }}
+      </li>
+    </ul>
+  </div>
+  <script>
+    
+    // 生命周期函数就是vue实例在某一个时间点会自动执行的函数
+    var vm = new Vue({
+        el: "#root",
+        // no template -> go to html to find <div id="root">
+        data: {
+          display: true,
+          display2: true,
+          username:'',
+          email: '',
+          items: [1,2,3,4,5,"S"]
+        },
+        methods: {
+          handleDisplay: function(){
+            this.display = !this.display;
+          }
+        }
+    })  
+  
+  </script>
+</body>
+</html>

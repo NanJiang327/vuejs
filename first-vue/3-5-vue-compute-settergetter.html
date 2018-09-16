@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Vue JS Todo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="vue.js"></script>
+  <style>
+    .activated {
+      color: yellowgreen;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"> 
+    <div @click="handleStyle"
+          :style="[styleObj]"
+    >
+    Style Bind</div>
+    <div @click="handleClass"
+          :class="[activated]"
+    >
+    Class Bind</div>
+    <div @click="handleClass2"
+          :class="{activated: isActivated, 'text-danger': hasError }"
+    >
+    Handle Class Two</div>
+    <my-component class="baz boo"
+                :class="{ active: isActive }"
+    ></my-component>
+  </div>
+  <script>
+    //当在一个自定义组件上使用 class 属性时，这些类将被添加到该组件的根元素上面。这个元素上已经存在的类不会被覆盖。
+    Vue.component('my-component', {
+      template: '<p class="foo bar">Hi</p>'
+    })
+
+    // 生命周期函数就是vue实例在某一个时间点会自动执行的函数
+    var vm = new Vue({
+        el: "#root",
+        // no template -> go to html to find <div id="root">
+        data: {
+          styleObj:{
+            color: "red"
+          },
+          age: 25,
+          activated: "",
+          isActivated: false,
+          hasError: true,
+          isActive: true
+        },
+        methods: {
+          handleStyle:function(){
+            // Style 绑定
+            this.styleObj.color = this.styleObj.color === "black" ? "red" : "black"
+          },
+          handleClass: function(){
+            // Class 绑定
+            this.activated = this.activated === "activated" ? "" : "activated";
+          },
+          handleClass2: function(){
+            // Class 绑定2
+            this.isActivated = !this.isActivated;            
+          }
+        }
+    })  
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Vue JS Todo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="vue.js"></script>
+  <style>
+    .activated {
+      color: yellowgreen;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="root">
+      <div
+        ref="hello"
+        v-on:click="handleClick"
+      >
+      Hello World
+      </div>
+      <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add a todo</label>
+        <input v-model="newTodoText" type="text" id="newTodo" placeholder="E.g. Feed the cat"/>
+        <button>Add</button>
+      </form>
+      <ul>
+        <!-- 注意这里的 is="todo-item" 属性。
+          这种做法在使用 DOM 模板时是十分必要的，因为在 <ul> 元素内只有 <li> 元素会被看作有效内容
+          。这样做实现的效果与 <todo-item> 相同，但是可以避开一些潜在的浏览器解析错误 -->
+        <li
+          is="todo-item"
+          v-for="(todo, index) in todos"
+          :key = "todo.id"
+          :title = "todo.title"
+          v-on:remove="todos.splice(index,1)"
+        ></li>
+      </ul>
+      <div ref="counter1" is="counter" @click.native="handleChange" :count="count" :content="123"></div>
+      <div ref="counter2" is="counter" @change="handleChange" :count="count" content="Hello"></div>
+      <div>{{ total }}</div>
+    </div>
+  </div>
+  <script>
+    // 子组件的data定义必须是一个返回对象的函数
+    Vue.component('todo-item', {
+      template:'\
+        <li>\
+          {{ title }}\
+          <button v-on:click="$emit(\'remove\')">Remove</button>\
+        </li>\
+      ',
+      props: ['title']
+    })
+
+    Vue.component('counter', {
+      template: '<div @click="handleClick2" >{{ number }}</div>',
+      data: function(){
+        return {
+          number: this.count
+        }
+      },
+      methods: {
+        handleClick2: function(){
+          this.number++;
+          this.$emit('change', 2);
+        }
+      },
+      // 如果组件中没有定义props对应的参数, 则传入的参数为非props特性, 则该参数会展示在dom上
+      props:{
+        //限制传入content的数据类型
+        content: [Number, String],
+        count: {
+          // 数据类型
+          type: Number,
+          // 要求数据
+          required: true,
+          // 效验器
+          validator: function(value){
+            return (value >= 1);
+          }
+        }
+      }
+    })
+    // 生命周期函数就是vue实例在某一个时间点会自动执行的函数
+    var vm = new Vue({
+        el: "#root",
+        // no template -> go to html to find <div id="root">
+       data:{
+          newTodoText: '',
+          todos: [
+            {
+              id: 1,
+              title: 'Do the dishes',
+            },
+            {
+              id: 2,
+              title: 'Take out the trash',
+            },
+            {
+              id: 3,
+              title: 'Mow the lawn'
+            }
+          ],
+          count: 1,
+          nextTodoId: 4,
+          total: 2
+       },
+       methods:{
+         addNewTodo: function(){
+           this.todos.push({
+             id: this.nextTodoId++,
+             title: this.newTodoText
+           })
+           this.newTodoText = ""
+         },
+         // 使用refs获取ref绑定的dom元素
+         handleClick: function(){
+           this.$refs.hello
+         },
+         handleChange: function(step){
+           this.total = this.$refs.counter1.number + this.$refs.counter2.number;
+           console.log(step);
+         }
+       }
+        
+    })  
+  
+  </script>
+</body>
+</html>

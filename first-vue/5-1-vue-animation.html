@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Animation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="vue.js"></script>
+  <script src="velocity.js"></script>
+  <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+  <style>
+    .fade-enter,
+    .fade-leave {
+        opacity: 0;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active
+    {
+      transition: opacity 3s
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <transition name="fade" appear type="transition" :duration="{enter: 2500, leave: 2500}"
+                            enter-active-class="animated swing fade-enter-active"
+                            leave-active-class="animated shake fade-leave-active"
+                            appear-active-class= "animated swing"
+    >
+        <div v-if="show">Hello World</div>
+    </transition> 
+    <button @click="handlerClick">Show</button>
+    <transition
+      name="fade2" @before-enter="handleBeforeEnter" @enter="handleEnter"
+                   @after-enter="handleAferEnter"
+                   
+    > <!-- @after-leave @before-leave @leave -->
+        <div v-if="show2">Hello World 2</div>
+    </transition>
+    <button @click="handlerClick2">Show2</button>
+    <fade>
+      <component :is="type"></component>
+    </fade> 
+  </div>
+  <script>
+    Vue.component('fade', {
+      props: ['show'],
+      template: `
+        <transition @before-enter="handleBeforeEnter" @enter="handleEnter" @after-enter="handleAfterEnter">
+          <slot ></slot>
+        </transition>  
+      `,
+      methods:{
+        handleBeforeEnter: function(el){
+          el.style.opacity = 0;
+        },
+        handleEnter: function(el, done){
+          Velocity(el, {opacity: 1}, {duration: 1000, complete: done})
+        },
+        handleAfterEnter: function(el){
+          alert('动画结束')
+        }
+      }
+    })
+
+    Vue.component('child', {
+      template: '<div>child</div>'
+    })
+    
+    Vue.component('child-one', {
+      template: '<div>child-one</div>'
+    })
+   
+    var vm = new Vue({
+        el: "#root",
+       data:{
+         show: true,
+         show2: true,
+         type: 'child'
+       },
+       methods: {
+        handlerClick:function(){
+            this.type = this.type === 'child' ? 'child-one' : 'child'
+            this.show = !this.show
+        },
+        handlerClick2:function(){
+              this.show2 = !this.show2
+        },
+        handleBeforeEnter: function(el){
+          el.style.opacity = 0;
+        },
+        handleEnter: function(el, done){
+          Velocity(el, {opacity: 1}, {duration: 1000, complete: done})
+        },
+        handleAferEnter: function(el){
+          alert('动画结束')
+        }
+       }
+        
+    })  
+  
+  </script>
+</body>
+</html>
