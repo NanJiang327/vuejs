@@ -17,11 +17,15 @@
 </template>
 
 <script>
+// 把vuex中的数据映射到mapState中
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'MainHeader',
-  props: {
-    city: String
+  computed: {
+    ...mapState(['city']),
+    ...mapGetters(['doubleCity'])
   }
+
 }
 </script>
 
@@ -29,6 +33,7 @@ export default {
 // 在build中的wepack.base.conf.js中配置了styles路径, 则styles代表/src/assets/styles
 // 在css中引用路径前需要加个 '~'
   @import '~styles/varibles.styl';
+  @import '~styles/mixins.styl'
   .header
     display: flex
     line-height: $headerHeight
@@ -51,7 +56,8 @@ export default {
       color: #ccc
       border-radius: .1rem
     .header-right
-      width: 1.24rem
+      min-width: 1.24rem
+      padding: 0 0.1rem
       float: right
       text-align: center
       color: #fff

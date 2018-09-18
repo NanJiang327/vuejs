@@ -7,6 +7,7 @@ import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // 解决某些移动设备上click延迟问题
 import fastClick from 'fastclick'
+import store from './store/index'
 // 统一移动设备的显示效果
 // 在build中的wepack.base.conf.js中配置了styles路径, 则styles代表/src/assets/styles
 import 'styles/reset.css'
@@ -24,6 +25,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router, // --> router: router
+  store,
   components: { App },
   template: '<App/>'
 })

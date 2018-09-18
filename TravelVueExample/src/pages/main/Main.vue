@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main-header :city="city"></main-header>
+    <main-header></main-header>
     <main-swiper :swiperList="swiperList"></main-swiper>
     <main-icons :iconList="iconList"></main-icons>
     <main-recommend :recommendList="recommendList"></main-recommend>
@@ -15,6 +15,7 @@ import MainIcons from './components/Icons'
 import MainRecommend from './components/Recommend'
 import MainWeekend from './components/Weekend'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Main',
@@ -27,23 +28,25 @@ export default {
   },
   data () {
     return {
-      city: '',
+      lastCity: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
       weekendList: []
     }
   },
+  computed: {
+    ...mapState(['city'])
+  },
   methods: {
     getHomeInfo () {
-      axios.get('/api/index.json')
+      axios.get('/api/index.json?city=' + this.city)
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
-        this.city = data.city
         this.swiperList = data.swiperList
         this.iconList = data.iconList
         this.recommendList = data.recommendList
@@ -52,7 +55,15 @@ export default {
     }
   },
   mounted () {
+    this.lastCity = this.city
     this.getHomeInfo()
+  },
+  activated () {
+    // 在app.vue中使用keep-alive会多一个activated钩子函数, 在页面重新显示的时候会调用钩子函数
+    if (this.lastCity !== this.city) {
+      this.lastCity = this.city
+      this.getHomeInfo()
+    }
   }
 }
 </script>
