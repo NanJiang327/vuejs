@@ -4,6 +4,7 @@
   "description": "Learning vue",
   "author": "NanJiang327 <nj499521010@gmail.com>",
   "private": true,
+  "homepage": "https://nanjiang327.github.io/vuejs/Qunar/",
   "scripts": {
     "dev": "webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
