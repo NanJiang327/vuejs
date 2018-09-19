@@ -1,0 +1,40 @@
+{
+  "ret": true,
+  "data": {
+    "swiperList": [{
+        "id": "0001",
+        "text": "Jet Boat",
+        "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/shotover-jet.jpg?focalpointx=50&focalpointy=50&height=440&outputformat=jpg&quality=75&source=2451447&transformationsystem=focalpointcrop&width=1280&securitytoken=E26AB44B330E68E8929F3708428752F6"
+      }, {
+        "id": "0002",
+        "text": "Sky Driving",
+        "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/queenstown.jpg?focalpointx=34&focalpointy=42&height=440&outputformat=jpg&quality=75&source=1856540&transformationsystem=focalpointcrop&width=1280&securitytoken=23A4B5F2AD96502C7DD64DDA34B80810"
+      }, {
+        "id": "0003",
+        "text": "Bike and Hiking",
+        "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/lake-pukaki.jpg?focalpointx=50&focalpointy=61&height=440&outputformat=jpg&quality=75&source=2931307&transformationsystem=focalpointcrop&width=1280&securitytoken=0E6DE1C751782ECD5F14C973838566B5"
+    }],
+    "iconList": [
+      {"id": "01", "iconUrl": "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png", "text": "Ticket"},
+      {"id": "02", "iconUrl": "http://img1.qunarzz.com/piao/fusion/1803/54/35899492b1302802.png", "text": "Parks"},
+      {"id": "03", "iconUrl": "http://img1.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png", "text": "Hot Spring"},
+      {"id": "04", "iconUrl": "http://img1.qunarzz.com/piao/fusion/1803/96/c70f1e85ae4a4f02.png", "text": "Natural"},
+      {"id": "05", "iconUrl": "http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png", "text": "Landmark"},
+      {"id": "06", "iconUrl": "http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png", "text": "Aquarium"},
+      {"id": "07", "iconUrl": "http://img1.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png", "text": "Shopping"},
+      {"id": "08", "iconUrl": "http://img1.qunarzz.com/piao/fusion/1803/95/8d02011d149bdb02.png", "text": "Transport"},
+      {"id": "09", "iconUrl": "http://img1.qunarzz.com/piao/fusion/1803/fa/2548667cb6e902.png", "text": "Museum"}
+    ],
+    "recommendList": [
+      {"id": "01", "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/day-hiking.jpg?focalpointx=61.6&focalpointy=50&height=320&outputformat=jpg&quality=75&source=2285377&transformationsystem=focalpointcrop&width=320&securitytoken=AD4C9BBC42BDA1C42D92B47074B4849F", "title": "Walking & hiking", "text": "For lovers of walking and hiking, Queenstown is paradise."},
+      {"id": "02", "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/steamer-wharf.jpg?focalpointx=21&focalpointy=50&height=320&outputformat=jpg&quality=75&source=2221921&transformationsystem=focalpointcrop&width=320&securitytoken=D4A45EC4BF4543B59419FDD773B11702", "title": "Towns in Queenstown", "text": "Queenstown is the region for adventure."},
+      {"id": "03", "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/helicopter-flight.jpg?focalpointx=42.1&focalpointy=50&height=320&outputformat=jpg&quality=75&source=1348850&transformationsystem=focalpointcrop&width=320&securitytoken=9DB5F1A3D804299D2B9BE93EBB759029", "title": "Boat cruises", "text": "Perfect to enjoy by boat cruise."},
+      {"id": "04", "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/lake-cruises.jpg?focalpointx=62.8&focalpointy=50&height=320&outputformat=jpg&quality=75&source=1348976&transformationsystem=focalpointcrop&width=320&securitytoken=80BFB7BC8BB05C0A9E96CD06AA44365E", "title": "Scenic flights", "text": "The landscapes are best seen from the air with a scenic flight."}
+    ],
+    "weekendList": [
+      {"id": "01", "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/mt-aspiring-national-park.jpg?height=488&outputformat=jpg&quality=80&source=2586652&transformationsystem=crop&width=650&securitytoken=67A33EA94FFD2FAB90B0EC6EBABA340C", "title": "Mount Aspiring National Park", "text": "Stretch your legs and feed your soul in this beautiful wilderness of native forests, towering mountains and long river valleys."},
+      {"id": "02", "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/scenic-dining.jpg?height=488&outputformat=jpg&quality=80&source=2149820&transformationsystem=crop&width=650&securitytoken=3AE3ED8203FE197202D4B15A1804B662", "title": "Aoraki Mount Cook National Park", "text": "Mt Cook, the tallest mountain in New Zealand, helped Sir Edmund Hillary to develop his climbing skills in preparation for the conquest of Everest."},
+      {"id": "03", "imgUrl": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/tairua.jpg?height=488&outputformat=jpg&quality=80&source=431126&transformationsystem=crop&width=650&securitytoken=A9C174DF59EB8A8395A83AAF188B3990", "title": "Tairua", "text": "Climb a volcanic peak, kayak around the harbour, surf at the beach & explore the surrounding forest. Tairua is a picturesque holiday town that has it all."}
+    ]
+  }
+}
