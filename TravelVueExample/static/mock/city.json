@@ -1,0 +1,221 @@
+{
+	"ret": true,
+	"data":{
+		"hotCities": [{
+			"id": "a001",
+			"spell": "akl",
+			"name": "Auckland"
+		}, {
+			"id": "o001",
+			"spell": "wel",
+			"name": "Wellington"
+		}, {
+			"id": "b001",
+			"spell": "rot",
+			"name": "Roturoa"
+		}, {
+			"id": "b002",
+			"spell": "tau",
+			"name": "Tauranga"
+		}, {
+			"id": "n001",
+			"spell": "ham",
+			"name": "Hamilton"
+		}, {
+			"id": "c002",
+			"spell": "chr",
+			"name": "Christchurch"
+		}],
+		"alphabet": ["A","B","C","G","H","M","N","O","S","T","W"],
+		"cities": {
+			"Auckland": [{
+				"id": "a001",
+				"spell": "akl",
+				"name": "Auckland"
+			}, {
+				"id": "a002",
+				"spell": "dev",
+				"name": "Devenport"
+			}, {
+				"id": "a003",
+				"spell": "wai",
+				"name": "Waiuku"
+			}],
+			"Bay Of Plenty": [{
+				"id": "b001",
+				"spell": "rot",
+				"name": "Roturoa"
+			}, {
+				"id": "b002",
+				"spell": "tau",
+				"name": "Tauranga"
+			}],
+			"Canterbury": [{
+				"id": "c001",
+				"spell": "aka",
+				"name": "Akaroa"
+			}, {
+				"id": "c002",
+				"spell": "chr",
+				"name": "Christchurch"
+			}, {
+				"id": "c003",
+				"spell": "lyt",
+				"name": "Lyttelton"
+			}, {
+				"id": "c004",
+				"spell": "tim",
+				"name": "Timaru"
+			}],
+			"Gisborne": [{
+				"id": "d001",
+				"spell": "gis",
+				"name": "Gisborne"
+			}],
+			"Hawke's Bay": [{
+				"id": "e001",
+				"spell": "has",
+				"name": "Hastings"
+			}, {
+				"id": "e002",
+				"spell": "nap",
+				"name": "Napier"
+			}],
+			"Manawatu-Wanganui": [{
+				"id": "f001",
+				"spell": "pah",
+				"name": "Pahiatua"
+			}, {
+				"id": "f002",
+				"spell": "pal",
+				"name": "Palmerston North"
+			}, {
+				"id": "f003",
+				"spell": "tai",
+				"name": "Taihape"
+			}, {
+				"id": "f004",
+				"spell": "wan",
+				"name": "Wanganui"
+			}],
+			"Marlborough": [{
+				"id": "g001",
+				"spell": "ble",
+				"name": "Blenheim"
+			}, {
+				"id": "g002",
+				"spell": "pic",
+				"name": "Picton"
+			}],
+			"Nelson": [{
+				"id": "h001",
+				"spell": "nel",
+				"name": "Nelson"
+			}],
+			"Northland": [{
+				"id": "i001",
+				"spell": "kai",
+				"name": "Kaitaia"
+			}, {
+				"id": "i002",
+				"spell": "rus",
+				"name": "Russell"
+			}],
+			"Otago": [{
+				"id": "j001",
+				"spell": "ale",
+				"name": "Alexandra"
+			}, {
+				"id": "j002",
+				"spell": "dun",
+				"name": "Dunedin"
+			}, {
+				"id": "j003",
+				"spell": "kai",
+				"name": "Kaitangata"
+			}, {
+				"id": "j004",
+				"spell": "oam",
+				"name": "Oamaru"
+			}],
+			"Sounthland": [{
+				"id": "k001",
+				"spell": "inv",
+				"name": "Invercargill"
+			}],
+			"Taranaki": [{
+				"id": "l001",
+				"spell": "haw",
+				"name": "Hawera"
+			}, {
+				"id": "l002",
+				"spell": "kap",
+				"name": "Kapuni"
+			}, {
+				"id": "l003",
+				"spell": "new",
+				"name": "New Plymouth"
+			}, {
+				"id": "l004",
+				"spell": "str",
+				"name": "Stratford"
+			}],
+			"Tasman": [],
+			"Waikato": [{
+				"id": "n001",
+				"spell": "ham",
+				"name": "Hamilton"
+			}, {
+				"id": "n002",
+				"spell": "pae",
+				"name": "Paeroa"
+			}, {
+				"id": "n003",
+				"spell": "tea",
+				"name": "Te Aroha"
+			}, {
+				"id": "n004",
+				"spell": "tok",
+				"name": "Tokoroa"
+			}, {
+				"id": "n005",
+				"spell": "wai",
+				"name": "Waihi"
+			}],
+			"Wellington": [{
+				"id": "o001",
+				"spell": "low",
+				"name": "Lower Hutt"
+			}, {
+				"id": "o002",
+				"spell": "mas",
+				"name": "Masterton"
+			}, {
+				"id": "o003",
+				"spell": "tea",
+				"name": "Te Aroha"
+			}, {
+				"id": "o004",
+				"spell": "upp",
+				"name": "Upper Hutt"
+			}, {
+				"id": "o005",
+				"spell": "wel",
+				"name": "Wellington"
+			}],
+			"West Coast": [{
+				"id": "p001",
+				"spell": "gre",
+				"name": "Greymouth"
+			}, {
+				"id": "p002",
+				"spell": "hok",
+				"name": "Hokitika"
+			}, {
+				"id": "p003",
+				"spell": "wes",
+				"name": "Westport"
+			}]
+		}
+	}
+}
