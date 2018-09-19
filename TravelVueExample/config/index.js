@@ -12,11 +12,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'https://raw.githubusercontent.com',
         changeOrigin: true,
         pathRewrite: {
           // http://api.douban.com/v2/movie/top250
-          '^/api': '/static/mock'
+          '^/api': '/NanJiang327/vuejs/master/TravelVueExample/static/mock'
         }
       }
       // '/levy': {
@@ -66,7 +66,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps
