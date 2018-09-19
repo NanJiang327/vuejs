@@ -14,6 +14,7 @@ import MainSwiper from './components/Swiper'
 import MainIcons from './components/Icons'
 import MainRecommend from './components/Recommend'
 import MainWeekend from './components/Weekend'
+
 import axios from 'axios'
 import { mapState } from 'vuex'
 

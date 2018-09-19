@@ -1,0 +1,30 @@
+{
+  "ret": true,
+  "data": {
+    "sightName": "Cycing & Mountain Biking in New Zealnad",
+    "bannerImg": "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/lake-ohau.jpg?height=488&outputformat=jpg&quality=80&source=3638444&transformationsystem=crop&width=650&securitytoken=29AA0C0FA47F32D4C50101A991CC0D87",
+    "gallaryImgs": ["https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/cycling.jpg?height=488&outputformat=jpg&quality=80&source=363013&transformationsystem=crop&width=650&securitytoken=C338058943381D4FD94C2316AC0538A8", 
+                    "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/lake-pukaki.jpg?outputformat=jpg&quality=80&source=3655195&transformationsystem=letterbox&width=940&securitytoken=9C4C9612C887E52F85655519A6FA0DE2",
+                    "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/alps-2-ocean-cycle-trail.jpg?height=488&outputformat=jpg&quality=80&source=2444957&transformationsystem=crop&width=650&securitytoken=2B3B6B48A329193D88BDB0A6F31A739A",
+                    "https://farm1.nzstatic.com/_proxy/imageproxy_1y/serve/moeraki-boulders.jpg?height=488&outputformat=jpg&quality=80&source=1359991&transformationsystem=crop&width=650&securitytoken=217D9DE62EB66E21EE65A2ADEBEDE048"
+
+    ],
+    "categoryList": [{
+        "title": "Adult",
+        "children": [{
+          "title": "Family tickets - 2 adults and 1 children",
+          "children": [{
+            "title": "Terms applied"
+          }]
+        },{
+          "title": "Family tickets - 2 adults and 2 children"
+        }]
+      }, {
+        "title": "Student"
+      }, {
+        "title": "Child"
+      }, {
+        "title": "Special"
+      }]
+  }
+}
