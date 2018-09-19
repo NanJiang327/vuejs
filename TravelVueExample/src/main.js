@@ -16,6 +16,8 @@ import 'styles/border.css'
 // 引入iconfont
 import 'styles/iconfont.css'
 import 'swiper/dist/css/swiper.css'
+// 引用polyfill兼容不支持promise的设备
+import 'babel-polyfill'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
