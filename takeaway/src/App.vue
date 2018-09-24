@@ -6,7 +6,7 @@
     <main-header :seller="seller"></main-header>
     <div class="tab border-bottom">
       <div class="tab-item">
-        <router-link to="/goods">Goods</router-link>
+        <router-link to="{path:'/goods'}">Goods</router-link>
       </div>
       <div class="tab-item">
         <router-link to="/rating">Rating</router-link>
@@ -15,7 +15,7 @@
         <router-link to="/seller">Seller</router-link>
       </div>
     </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
   components: {
     MainHeader
   },
-  mounted () {
+  created () {
     // this.$router.go('/goods')
     this.getSellerInfo()
   },

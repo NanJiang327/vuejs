@@ -35,4 +35,15 @@ router.get('/ratings.json', (req, res) => {
   }
 })
 
+router.get('/all.json', (req, res) => {
+  if (apiData) {
+    res.json({
+      'error': '0',
+      data: apiData
+    })
+  } else {
+    res.send('no such a name')
+  }
+})
+
 module.exports = router

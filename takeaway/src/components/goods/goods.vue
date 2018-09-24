@@ -33,37 +33,41 @@
                 <div class="price">
                   <span class="now">${{food.price}}</span><span v-show="food.oldPrice" class="old">${{food.oldPrice}}</span>
                 </div>
+                <div class="cartcontrol-wrapper">
+                  <cart-num :food="food"></cart-num>
+                </div>
               </div>
             </li>
           </ul>
         </li>
       </ul>
     </div>
+    <shop-cart :seller="seller" :selectFoods="selectFoods"></shop-cart>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import GoodIcon from '../common/goodicon/goodicon'
+import CartNum from '../common/cart/cartnum'
+import ShopCart from '../cart/cart'
 import Bscroll from 'better-scroll'
 
 const ERR_OK = '0'
 
 export default {
   name: 'Goods',
-  props: {
-    seller: {
-      type: Object
-    }
-  },
   components: {
-    GoodIcon
+    GoodIcon,
+    ShopCart,
+    CartNum
   },
   data () {
     return {
       goods: [],
       listHeight: [],
-      scrollY: 0
+      scrollY: 0,
+      seller: {}
     }
   },
   computed: {
@@ -76,6 +80,17 @@ export default {
         }
       }
       return 0
+    },
+    selectFoods () {
+      let foods = []
+      this.goods.forEach((good) => {
+        good.foods.forEach((food) => {
+          if (food.count) {
+            foods.push(food)
+          }
+        })
+      })
+      return foods
     }
   },
   mounted () {
@@ -91,12 +106,13 @@ export default {
   },
   methods: {
     getSellerInfo () {
-      axios.get('/api/goods.json')
+      axios.get('/api/all.json')
         .then(this.getGoodsSuccessInfo)
     },
     getGoodsSuccessInfo (res) {
       if (res.data.error === ERR_OK) {
-        this.goods = res.data.data
+        this.goods = res.data.data.goods
+        this.seller = res.data.data.seller
         this.$nextTick(() => {
           this._calculateHeight()
         })
@@ -169,6 +185,7 @@ export default {
           margin-right .2rem
         .content
           flex 1
+          position relative
           .name
             margin .04rem 0 .16rem 0
             height .28rem
@@ -196,5 +213,8 @@ export default {
               text-decoration line-through
               font-size 10px
               color rgb(147,153,159)
-
+          .cartcontrol-wrapper
+            position absolute
+            right -12px
+            bottom 0
 </style>
