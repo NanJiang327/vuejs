@@ -6,7 +6,7 @@
     <main-header :seller="seller"></main-header>
     <div class="tab border-bottom">
       <div class="tab-item">
-        <router-link to="{path:'/goods'}">Goods</router-link>
+        <router-link to="/goods">Goods</router-link>
       </div>
       <div class="tab-item">
         <router-link to="/rating">Rating</router-link>
