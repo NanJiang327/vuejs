@@ -46,12 +46,14 @@ export default {
           negative: 'Negative'
         }
       }
-    }
-  },
-  data () {
-    return {
-      ratingType: ALL,
-      onlyContent: false
+    },
+    ratingType: {
+      type: Number,
+      default: ALL
+    },
+    onlyContent: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -68,12 +70,12 @@ export default {
   },
   methods: {
     select (type, event) {
-      this.ratingType = type
+      // this.ratingType = type
       this.$emit('ratingtype', type)
     },
     toggleContent () {
-      this.onlyContent = !this.onlyContent
-      this.$emit('contenttype', this.onlyContent)
+      // this.onlyContent = !this.onlyContent
+      this.$emit('contenttype')
     }
   }
 }

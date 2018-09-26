@@ -36,11 +36,29 @@
         <spliter></spliter>
         <div class="rating border-bottom">
           <h1 class="title">Ratings</h1>
-          <rating  :only-content="onlyContent"
-                   :ratings="food.ratings"
+          <rating  :ratings="food.ratings"
                    :desc="desc"
+                   :ratingType="ratingType"
+                   :onlyContent="onlyContent"
+                   @ratingtype="typeChange"
+                   @contenttype="contentOnly"
           >
           </rating>
+          <div class="rating-wrapper">
+            <ul v-show="food.ratings && food.ratings.length">
+              <li v-show="needShow(rating.rateType, rating.text)" v-for="(rating,index) in food.ratings" :key="index" class="rating-item border-bottom">
+                <div class="user">
+                  <span class="name">{{rating.username}}</span>
+                  <img :src="rating.avatar" alt="" width="12" height="12" class="avatar">
+                </div>
+                <div class="time">{{rating.rateTime | formateDate}}</div>
+                <p class="text">
+                  <span :class="{'icon-thumb_up':rating.rateType===0,'icon-thumb_down': rating.rateType===1}"></span>{{rating.text}}
+                </p>
+              </li>
+            </ul>
+            <div class="no-rating" v-show="!food.ratings || !food.ratings.length">No Comments</div>
+          </div>
         </div>
       </div>
     </div>
@@ -53,6 +71,9 @@ import Bscroll from 'better-scroll'
 import CartNum from '../cart/cartnum'
 import Spliter from '../spliter/spliter'
 import Rating from '../rating/rating'
+import {formateDate} from '../../../assets/js/data'
+
+const ALL = 2
 
 export default {
   name: 'FoodDetail',
@@ -67,7 +88,8 @@ export default {
   data () {
     return {
       showDetail: false,
-      onlyContent: true,
+      ratingType: ALL,
+      onlyContent: false,
       desc: {
         all: 'All',
         positive: 'Recommend',
@@ -75,13 +97,19 @@ export default {
       }
     }
   },
+  filters: {
+    formateDate (time) {
+      let date = new Date(time)
+      return formateDate(date, 'yyyy-MM-dd hh:mm')
+    }
+  },
   methods: {
     show () {
       this.showDetail = true
-      this.onlyContent = true
+      this.ratingType = ALL
+      this.onlyContent = false
       this.$nextTick(() => {
         if (!this.foodScroll) {
-          console.log('Scroll Called')
           this.foodScroll = new Bscroll(this.$refs.foodDetail, {
             click: true
           })
@@ -99,6 +127,28 @@ export default {
     addCart () {
       this.$emit('cartadd', event.target)
       Vue.set(this.food, 'count', 1)
+    },
+    typeChange (type) {
+      this.ratingType = type
+      this.$nextTick(() => {
+        this.foodScroll.refresh()
+      })
+    },
+    contentOnly () {
+      this.onlyContent = !this.onlyContent
+      this.$nextTick(() => {
+        this.foodScroll.refresh()
+      })
+    },
+    needShow (type, text) {
+      if (this.onlyContent && !text) {
+        return false
+      }
+      if (this.ratingType === ALL) {
+        return true
+      } else {
+        return type === this.ratingType
+      }
     }
   },
   computed: {
@@ -213,4 +263,44 @@ export default {
         margin-left .36rem
         font-size 14px
         color rgb(7,17,27)
+      .rating-wrapper
+        padding 0 .36rem
+        .rating-item
+          position relative
+          padding .32rem 0
+          .user
+            position absolute
+            right 0
+            top .32rem
+            line-height .24rem
+            font-size 0
+            .name
+              display inline-block
+              margin-right .12rem
+              vertical-align top
+              font-size 10px
+              color rgb(147,153,159)
+            .avatar
+              border-radius 50%
+          .time
+            margin-bottom .12rem
+            line-height .24rem
+            font-size 10px
+            color rgb(147,153,159)
+          .text
+            line-height .32rem
+            font-size 12px
+            color rgb(7,17,27)
+            .icon-thumb_up, .icon-thumb_down
+              margin-right .08rem
+              line-height .32rem
+              font-size 12px
+            .icon-thumb_up
+              color rgb(0,160,220)
+            .icon-thumb_down
+              color rgb(147,153,159)
+      .no-rating
+        padding .32rem 0
+        font-size 12px
+        color rgb(147,153,159)
 </style>
