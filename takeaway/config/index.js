@@ -12,11 +12,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'https://raw.githubusercontent.com',
+        target: 'http://localhost:3000',
         changeOrigin: true,
         pathRewrite: {
           // http://api.douban.com/v2/movie/top250
-          '^/api': '/NanJiang327/vuejs/master/takeaway/jsondata/data.json'
+          '^/api': '/api'
         }
       }
     },

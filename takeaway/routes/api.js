@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const apiData = require('../data.json')
+const apiData = require('../jsondata/data.json')
 
 router.get('/seller.json', (req, res) => {
   if (apiData.seller) {
