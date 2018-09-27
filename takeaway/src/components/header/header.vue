@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import Star from '../star/star'
+import Star from '../common/star/star'
 import GoodIcon from '../common/goodicon/goodicon'
 export default {
   name: 'MainHeader',
