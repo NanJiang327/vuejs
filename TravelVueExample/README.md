@@ -1,6 +1,7 @@
 # travel-example
-
-> Learning vue
+> This is project is based on Vue 2.5
+> 
+> [Demo](https://nanjiang327.github.io/vuejs/qunar/#/?_blank) (Better experience on mobile device)
 
 ## Build Setup
 
@@ -11,11 +12,31 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Tech Stack
+- Vue-cli
+- Vue
+- Axios
+- Vue-router
+- VueAwesomeSwwiper
+- Better-scroll
+- Stylus
+- Webpack
+- ES6
+- fastClick
+- Babel polyfill
+
+## Structure
+```
+
+```
+## Demo
+![img](https://github.com/NanJiang327/vuejs/blob/master/TravelVueExample/demo/demo%232.gif)
+
+## Features
+
+
+
+## License
+MIT
