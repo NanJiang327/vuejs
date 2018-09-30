@@ -1,6 +1,16 @@
-# takeaway
+# Takeaway App
 
-> take way example
+> This is project is based on Vue 2.5
+> 
+> In this single web app
+> 
+> 1. Add and remove product(s) into/from cartyou can also view the detail and comments of products. 
+> 2. See the seller detail
+> 3. See the food detail, rating and comments. You can also filtering comments
+> 4. See the what you had add to cart
+> 
+> 
+> <a href="https://nanjiang327.github.io/vuejs/takeaway/#/goods">Demo</a> (Better experience on mobile device)
 
 ## Build Setup
 
@@ -11,11 +21,59 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
-npm run build
+# Express server run at localhost:3000
 
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Tech Stack
+- vue-cli
+- Vue
+- Axios
+- Vue-router
+- Better-scroll
+- Stylus
+- Webpack
+- ES6
+
+## Structure
+```
+.
+├── build // webpack config file
+├── config // package path
+├── index.html // entry html page
+├── jsondata // mock data
+├── package.json //
+├── resource
+├── routes // nodejs router config files
+├── src
+	├── App.vue // entry vue file
+	├── assets
+	│   ├── js
+	│   └── styles
+	├── components // components
+	│   ├── cart 
+	│   ├── common // common components
+	│   ├── goods
+	│   ├── header
+	│   ├── rating
+	│   └── seller
+	├── main.js // componets loading file
+	└── router
+	    └── index.js //vue route config file
+```
+## Demo
+![img](https://github.com/NanJiang327/vuejs/blob/master/takeaway/demo/demo%231.gif)
+
+## Features
+- [x] Add product(s) to cart and count the total price
+- [x] Animation for adding product
+- [x] Remove product(s) from cart
+- [x] View seller details
+- [x] View product detail
+- [x] View and filtering user comments
+- [x] Cart review
+- [ ] Check out
+
+
+## License
+MIT
