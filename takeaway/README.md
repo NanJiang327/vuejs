@@ -10,7 +10,7 @@
 > 4. See the what you had add to cart
 > 
 > 
-> <a href="https://nanjiang327.github.io/vuejs/takeaway/#/goods">Demo</a> (Better experience on mobile device)
+> <a href="https://nanjiang327.github.io/vuejs/takeaway/#/goods" target="__blank">Demo</a> (Better experience on mobile device)
 
 ## Build Setup
 
@@ -26,7 +26,7 @@ npm run dev
 ```
 
 ## Tech Stack
-- vue-cli
+- Vue-cli
 - Vue
 - Axios
 - Vue-router
@@ -45,7 +45,7 @@ npm run dev
 ├── package.json //
 ├── resource
 ├── routes // nodejs router config files
-├── src
+└── src
 	├── App.vue // entry vue file
 	├── assets
 	│   ├── js
