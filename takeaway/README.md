@@ -9,8 +9,7 @@
 > 3. See the food detail, rating and comments. You can also filtering comments
 > 4. See the what you had add to cart
 > 
-> 
-> <a href="https://nanjiang327.github.io/vuejs/takeaway/#/goods" target="__blank">Demo</a> (Better experience on mobile device)
+> [Demo](https://nanjiang327.github.io/vuejs/takeaway/#/goods?_blank) (Better experience on mobile device)
 
 ## Build Setup
 
