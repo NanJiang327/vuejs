@@ -1,14 +1,14 @@
 # Takeaway App
 
 > This is project is based on Vue 2.5
-> 
+>
 > In this single web app
-> 
-> 1. Add and remove product(s) into/from cartyou can also view the detail and comments of products. 
+>
+> 1. Add and remove product(s) into/from cartyou can also view the detail and comments of products.
 > 2. See the seller detail
 > 3. See the food detail, rating and comments. You can also filtering comments
 > 4. See the what you had add to cart
-> 
+>
 > [Demo](https://nanjiang327.github.io/vuejs/takeaway/#/goods?_blank) (Better experience on mobile device)
 
 ## Build Setup
@@ -50,7 +50,7 @@ npm run dev
 	│   ├── js
 	│   └── styles
 	├── components // components
-	│   ├── cart 
+	│   ├── cart
 	│   ├── common // common components
 	│   ├── goods
 	│   ├── header
@@ -73,6 +73,3 @@ npm run dev
 - [x] Cart review
 - [ ] Check out
 
-
-## License
-MIT

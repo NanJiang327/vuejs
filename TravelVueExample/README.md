@@ -1,6 +1,6 @@
 # travel-example
 > This is project is based on Vue 2.5
-> 
+>
 > [Demo](https://nanjiang327.github.io/vuejs/qunar/#/?_blank) (Better experience on mobile device)
 
 ## Build Setup
@@ -26,17 +26,7 @@ npm run dev
 - ES6
 - fastClick
 - Babel polyfill
+- Bootstrap 3
 
-## Structure
-```
-
-```
 ## Demo
 ![img](https://github.com/NanJiang327/vuejs/blob/master/TravelVueExample/demo/demo%232.gif)
-
-## Features
-
-
-
-## License
-MIT
