@@ -17,6 +17,9 @@
     <h1>Full Name Use Method: {{ fullName2() }}</h1>
     <h1>Full Name Use Watch: {{ fullName3 }}</h1>
     <h1>{{ age }}</h1>
+    <p>{{ watchTime }}</p>
+    <p>{{ watchTime2() }}</p>
+    <p v-for="item in foods"> {{ item }}</p>
   </div>
 
   <script>
@@ -28,18 +31,25 @@
           firstName: '',
           lastName: '',
           fullName3: '',
-          age: 25
+          age: 25,
+          foods: ["apple","pear","orange","banana"]
         },
         methods: {
           fullName2: function(){
             console.log('method计算了一次')
             return this.firstName + ' ' + this.lastName;
+          },
+          watchTime2: function() {
+            return Date.now();
           }
         },
         computed: {
           fullName: function(){
             console.log('computed计算了一次')
             return this.firstName + ' ' + this.lastName;
+          },
+          watchTime: function() {
+            return Date.now();
           }
         },
         watch: {
