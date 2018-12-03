@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Vue JS Todo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="vue.js"></script>
+  <style>
+      .tab-button {
+        padding: 6px 10px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background: #f0f0f0;
+        margin-bottom: -1px;
+        margin-right: -1px;
+    }
+    .tab-button:hover {
+        background: #e0e0e0;
+    }
+    .tab-button.active {
+        background: #e0e0e0;
+    }
+    .tab {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root" class="demo"> 
+    <button
+        v-for="tab in tabs"
+        v-bind:key="tab"
+        v-bind:class="['tab-button',{ active: currentTab === tab }]"
+        v-on:click="currentTab = tab">
+    {{ tab }}</button>
+
+    <component
+    :is="currentTabComponent"
+    class="tab"
+    ></component>
+  </div>
+  
+  <script>
+    Vue.component('tab-home', { 
+        template: '<div>Home component</div>' 
+    })
+    Vue.component('tab-posts', { 
+        template: '<div>Posts component</div>' 
+    })
+    Vue.component('tab-archive', { 
+        template: '<div>Archive component</div>' 
+    })
+    // 生命周期函数就是vue实例在某一个时间点会自动执行的函数
+    var vm = new Vue({
+        el: "#root",
+        // no template -> go to html to find <div id="root">
+        data: {
+            currentTab: 'Home',
+            tabs: ['Home','Posts','Archive']
+        },
+        computed: {
+            currentTabComponent: function () {
+                return 'tab-' + this.currentTab.toLowerCase()
+            }
+        }
+    })  
+  
+  </script>
+</body>
+</html>
