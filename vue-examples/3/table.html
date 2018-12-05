@@ -75,12 +75,9 @@
 <body>
   <div id="demo">
     <form id="search">
-        Search <input name="query" v-model="searchQuery">
+      Search <input name="query" v-model="searchQuery">
     </form>
-    <demo-grid
-        :data="gridData"
-        :columns="gridColumns"
-        :filter-key="searchQuery">
+    <demo-grid :data="gridData" :columns="gridColumns" :filter-key="searchQuery">
     </demo-grid>
   </div>
   <script type="text/x-templete" id="grid-template">
@@ -108,71 +105,71 @@
   <script>
     var apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=';
 
-    Vue.component('demo-grid',{
+    Vue.component('demo-grid', {
       template: "#grid-template",
       props: {
         data: Array,
         columns: Array,
         filterKey: String
       },
-      data: function () {
-          var sortOrders = {}
-          this.columns.forEach(function (key){
-              sortOrders[key] = 1
-          })
-          return {
-              sortKey: '',
-              sortOrders: sortOrders
-          }
+      data: function() {
+        var sortOrders = {}
+        this.columns.forEach(function(key) {
+          sortOrders[key] = 1
+        })
+        return {
+          sortKey: '',
+          sortOrders: sortOrders
+        }
       },
       computed: {
-          filteredData: function () {
-              var sortKey = this.sortKey
-              var filterKey = this.filterKey && this.filterKey.toLowerCase()
-              var order = this.sortOrders[sortKey] || 1
-              var data = this.data
-              if (filterKey) {
-                  data = data.filter(function (row){
-                      return Object.keys(row).some(function (key){
-                          return String(row[key]).toLocaleLowerCase().indexOf(filterKey) > -1
-                      })
-                  })
-              }
-              if (sortKey) {
-                  data = data.slice().sort(function (a,b){
-                      a = a[sortKey]
-                      b = b[sortKey]
-                      return (a === b ? 0 : a > b ? 1 : -1) * order
-                  })
-              }
-              return data
+        filteredData: function() {
+          var sortKey = this.sortKey
+          var filterKey = this.filterKey && this.filterKey.toLowerCase()
+          var order = this.sortOrders[sortKey] || 1
+          var data = this.data
+          if (filterKey) {
+            data = data.filter(function(row) {
+              return Object.keys(row).some(function(key) {
+                return String(row[key]).toLocaleLowerCase().indexOf(filterKey) > -1
+              })
+            })
           }
+          if (sortKey) {
+            data = data.slice().sort(function(a, b) {
+              a = a[sortKey]
+              b = b[sortKey]
+              return (a === b ? 0 : a > b ? 1 : -1) * order
+            })
+          }
+          return data
+        }
       },
       filters: {
-        capitalize: function (str) {
-            return str.charAt(0).toUpperCase() + str.slice(1)
+        capitalize: function(str) {
+          return str.charAt(0).toUpperCase() + str.slice(1)
         }
       },
       methods: {
-        sortBy: function (key) {
-            this.sortKey = key
-            this.sortOrders[key] = this.sortOrders[key] * -1
+        sortBy: function(key) {
+          this.sortKey = key
+          this.sortOrders[key] = this.sortOrders[key] * -1
         }
       }
     })
 
     var demo = new Vue({
-        el: '#demo',
-        data: {
-            searchQuery: '',
-            gridColumns: ['name','power'],
-            gridData: [
-                {name: 'Chuck Norris', power: Infinity},
-                {name: 'Bruce Less', power: 9000},
-                {name: 'Jackie Chan', power: 7000},
-                {name: 'Jet Li', power: 8000}
-            ]
-        }
+      el: '#demo',
+      data: {
+        searchQuery: '',
+        gridColumns: ['name', 'power'],
+        gridData: [
+          { name: 'Chuck Norris', power: Infinity },
+          { name: 'Bruce Less', power: 9000 },
+          { name: 'Jackie Chan', power: 7000 },
+          { name: 'Jet Li', power: 8000 }
+        ]
+      }
     })
   </script>
 </body>

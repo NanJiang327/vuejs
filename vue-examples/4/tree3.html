@@ -38,7 +38,8 @@
              @click="toggle"
              @dbClick="changeType">
           {{ model.name }}
-          <span v-if="isFolder">[{{ open ? '-' : '+' }}]</span>  
+          <span v-if="isFolder">[{{ open ? '-' : '+' }}]</span>
+          <span @click.stop="deleteItem" v-if="!isFolder"> x </span>
         </div>
         <ul v-show="open" v-if="isFolder">
             <item class="item"
@@ -46,7 +47,7 @@
                   :key="index"
                   :model="model">
             </item>
-            <li class="add" @click="addChild"></li>
+            <li class="add" @click="addChild">+</li>
         </ul>
     </li>
   </script>
@@ -112,6 +113,10 @@
                 this.model.children.push({
                     name: 'new stuff'
                 })
+            },
+            deleteItem: function () {
+                console.log(this.model)
+                delete this.model
             }
         }
     })
