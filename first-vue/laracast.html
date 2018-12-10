@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Vue </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="vue.js"></script>
+  <style>
+    .is-loading {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="root" class="demo"> 
+    <input type="text" v-model="message">
+    <p>The value of the in put is: {{ message }}</p>
+    <ul>
+      <li v-for="name in names"> {{ name }}</li>
+    </ul>
+    <input type="text" v-model="name">
+    <button @click="addName" :title="title">Add Name</button>
+
+    <br>
+
+    <button :title="title" 
+    :class="{ 'is-loading': isLoading }"
+    @click="toggleClass">Add Name</button>
+
+    <br>
+
+    <h1>{{ taskType }}</h1>
+    <ul>
+      <li v-for="task in showTask" v-text="task.text"></li>
+    </ul>
+    <button @click="toggleTaskType" >show {{ taskType }}</button>
+
+    <h1>Component</h1>
+    <task-list></task-list>
+  </div>
+  
+  <script>
+    Vue.component('task-list', {
+      template: '<div><task-item v-for="task in tasks">{{ task.text }}</task-item></div>',
+
+      data () {
+        return {
+          tasks: [
+            {text: 'Task 1', completed: true},
+            {text: 'Task 2', completed: false},
+            {text: 'Task 3', completed: false},
+            {text: 'Task 4', completed: false},
+            {text: 'Task 5', completed: true},
+            {text: 'Task 6', completed: false},
+          ]
+        }
+      }
+    })
+
+    Vue.component('task-item', {
+      template: '<li><slot></slot></li>'
+    })
+
+    var app = new Vue({
+      el: '#root',
+      data: {
+        name: '',
+        message: 'Hello World',
+        names: ['Nan', 'Cici', 'BBB'],
+        title: 'Now the title is being set through js',
+        isLoading: false,
+        tasks: [
+          {text: 'Task 1', completed: true},
+          {text: 'Task 2', completed: false},
+          {text: 'Task 3', completed: false},
+          {text: 'Task 4', completed: false},
+          {text: 'Task 5', completed: true},
+          {text: 'Task 6', completed: false},
+        ],
+        taskType: 'Completed Tasks'
+      },
+      methods: {
+        addName() {
+          this.names.push(this.name)
+          this.name = ''
+        },
+        toggleClass() {
+          this.isLoading = !this.isLoading
+        },
+        toggleTaskType() {
+          this.taskType = this.taskType === 'Completed Tasks' ? 'Incompleted Tasks' : 'Completed Tasks'
+        }
+      },
+      computed: {
+        reverseMessage() {
+          return this.message.split('').reverse().join('')
+        },
+        showTask() {
+          return this.tasks.filter(task => {
+            if (this.taskType === 'Completed Tasks') {
+              return task.completed
+            } else {
+              return !task.completed
+            }
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html>
