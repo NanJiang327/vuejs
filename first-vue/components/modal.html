@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css">
+  <script src="../vue.js"></script>
+  <title>Tab</title>
+</head>
+<body>
+  
+  <div id="root">
+    <button @click="ModalShow = true">Show Modal</button>
+    <modal @close="handleClose" v-show="ModalShow">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis et officia ab alias, dolores quibusdam labore ipsa explicabo fuga, voluptate nesciunt, itaque a eum quidem? Sit, nemo! Eveniet, amet quod!
+    </modal>
+  </div>
+
+
+  <script>
+
+    Vue.component('modal', {
+      template: `
+        <div class="modal is-active">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+              <slot></slot>
+            </div>
+          </div>
+          <button class="modal-close" @click="closeModal"></button>
+        </div>
+      `,
+      methods: {
+        closeModal() {
+          this.$emit('close')
+        }
+      }
+    })
+
+    new Vue({
+      el: '#root',
+      data: {
+        ModalShow: false
+      },
+      methods: {
+        handleClose() {
+          this.ModalShow = !this.ModalShow
+          console.log('Click')
+        }
+      }
+    })
+  
+  </script>
+</body>
+</html>

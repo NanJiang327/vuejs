@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css">
+  <script src="../vue.js"></script>
+  <title>Hook </title>
+</head>
+<body>
+  
+  <div id="root">
+    <p id="text">{{ info }}</p>
+  </div>
+
+
+  <script>
+    app = new Vue({
+      el: '#root',
+      data: {
+        info: 'Message '
+      },
+      beforeCreate() {
+        console.log('Status ====> Before create')
+        console.log('Info: '+this.info)
+        console.log('El: ' +this.$el)
+        console.log('====  End  ====')
+      },
+      created() {
+        console.log('Status ====> Created')
+        console.log('Info: '+this.info)
+        console.log('El: ' +this.$el)
+        console.log('====  End  ====')
+      },
+      beforeMount() {
+        console.log('Status ====> Before Mounted')
+        console.log('Info: '+this.info)
+        console.log('El: ' +this.$el)
+        console.log('====  End  ====')
+      },
+      mounted() {
+        console.log('Status ====>  Mounted')
+        console.log('Info: '+this.info)
+        console.log('El: ' +this.$el)
+        console.log('====  End  ====')
+      },
+      beforeUpdate() {
+        console.log('Status ====> Before upadte')
+        console.log('Info: '+this.info)
+        console.log('El: ' +this.$el)
+        console.log('Info element ' + document.querySelector('#text').innerHTML)
+        console.log('====  End  ====')
+      },
+      updated() {
+        console.log('Status ====> Updated ')
+        console.log('Info: '+this.info)
+        console.log('El: ' +this.$el)
+        console.log('Info element ' + document.querySelector('#text').innerHTML)
+        console.log('====  End  ====')
+      },
+      beforeDestroy() {
+        console.log('Status ====> Before Destory')
+        console.log('Info: '+this.info)
+        console.log('El: ' +this.$el)
+        console.log('====  End  ====')
+      },
+      destroyed() {
+        console.log('Status ====> Destroyed ')
+        console.log('Info: '+this.info)
+        console.log('El: ' +this.$el)
+        console.log('====  End  ====')
+      },
+    })
+  
+  </script>
+</body>
+</html>

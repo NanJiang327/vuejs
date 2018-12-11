@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css">
+  <script src="../vue.js"></script>
+  <title>Tab</title>
+</head>
+<body>
+  
+  <div id="root">
+    <tabs>
+      <tab name="Tab 1" :selected="true">
+        <h3>This is a new tab called tab 1</h3>
+      </tab>
+
+      <tab name="Tab 2">
+        <h3>This is a new tab called tab 2</h3>
+      </tab>
+
+      <tab name="Tab 3">
+        <h3>This is a new tab called tab 3</h3>
+      </tab>  
+    </tabs>
+  </div>
+
+
+  <script>
+    Vue.component('tabs', {
+      template: `
+        <div>
+              <div class="tabs">
+                <ul>
+                  <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
+                    <a :href="tab.href" @click="selectTab(tab)">{{ tab.name }}</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="tabs-detail">
+                <slot></slot>
+              </div>
+          </div>
+        `,
+        data() {
+          return { tabs: [] }
+        },
+        created() {
+          this.tabs = this.$children
+        },
+        methods: {
+          selectTab(selectedTab) {
+            this.tabs.forEach(tab => {
+              return tab.isActive = tab.name === selectedTab.name  
+            })
+          }
+        }
+    })
+
+    Vue.component('tab',{
+      template: `<div v-show="isActive"><slot></slot></div>`,
+      props: {
+        name: { require: true },
+        selected: { default: false }
+      },
+      data() {
+        return  { isActive: false }
+      },
+      mounted() {
+        this.isActive = this.selected
+      },
+      computed: {
+        href() {
+          return '#' + this.name.toLowerCase().replace(/ /g, '-')
+        }
+      }
+    })
+
+    new Vue({
+      el: '#root',
+
+    })
+  
+  </script>
+</body>
+</html>
