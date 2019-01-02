@@ -19,11 +19,36 @@
       <template slot-scope="props" slot="list">
         <h3>{{ props.item }} - {{ props.word }}</h3>
       </template>
-      <div class="footer" slot='footer'>Footer</div>
+      <div class="footer" slot='footer' slot-scope="slotProps">Footer {{ slotProps.words }}</div>
     </body-content>
+      <slot-component>
+        <template slot-scope="slotProps" slot="dayList">
+          {{ slotProps.day }} - {{ slotProps.keyword }}
+        </template>
+      </slot-component>
   </div>
+
   <script>
     Vue.prototype.bus = new Vue()
+
+    Vue.component('slot-component', {
+      template: `
+                  <ul>
+                    <li
+                    v-for="day in dayList"
+                    >
+                    <slot :day="day" :keyword="keyword" name="dayList">
+                    </slot>
+                    </li>
+                  </ul>
+                `,
+      data() {
+        return {
+          dayList: ['monday','tuesday','wednesday', 'thursday'],
+          keyword: 'this is a key'
+        }
+      }
+    })
 
     Vue.component('body-content', {
       data: function(){
@@ -41,16 +66,33 @@
                       <slot v-for="item of list" :item=item :word=words name="list">
                         {{ item }}
                       </slot>  
-                   <slot name='footer'></slot>
+                   <slot name='footer' :words="words"></slot>
                  </div>`,
     })
+
+    var mixin = {
+      created: function() {
+        console.log('Mixin created called');
+      },
+      data: {
+        info: 'this is info',
+        text: 'this is text'
+      }
+    }
     
     var vm = new Vue({
-        el: "#root",
-       data:{
-       }
+      mixins: [mixin],
+      el: "#root",
+      data:{
+        text: 'overwrite text'
+      },
+      created: function() {
+        console.log('Root created');
+      },
+      
+      template: `<div><p>{{ text }}</p><p>{{ info }}</p></div>`
         
-    })  
+    })
   
   </script>
 </body>

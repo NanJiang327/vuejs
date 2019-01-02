@@ -30,11 +30,66 @@
     <ul>
       <li v-for=" (item, index) of list" :key="index">{{ item }}</li>
     </ul>
+    <custom-input placeholder="试试看吧!" type="password"></custom-input>
+    <check-box :checked="loveVue"></check-box>
+    <nested-input v-model="nestedValue"  @on-focus="focused"></nested-input>
   </div>
 
   
 
   <script>
+    Vue.component('custom-input', {
+      inheritAttrs: false,
+      template: `<label> 请输入用户名: <input v-bind="$attrs" :value="value" @input="$emit('input', $event.target.value)"> </label>`,
+      data() {
+        return {
+          value: ''
+        }
+      }
+    })
+
+
+    Vue.component('nested-input', {
+      inheritAttrs: false,
+      template: `<label> 请输入密码: <input v-on="inputListeners" :nestedValue="nestedValue"> </label>`,
+      props: {
+        nestedValue: ''
+      },
+      computed: {
+        inputListeners() {
+          var vm = this
+          return Object.assign({}, this.$listeners, {
+            input(event) {
+              vm.$emit('input', event.target.value)
+            },
+            blur() {
+              console.log('Bluring')
+            },
+            focus() {
+              console.log('Focus overwrited')
+            }
+          })
+        }
+      },
+      methods: {
+        onFocus() {
+          this.$emit('on-focus')
+        }
+      }
+    })
+
+
+    Vue.component('checkBox', {
+      template: `<input :checked="checked" type="checkbox" @change="$emit('change', $event.target.checked)">`,
+      model: {
+        props: 'checked',
+        event: 'change'
+      },
+      props: {
+        checked: Boolean
+      }
+    })
+
     new Vue({
         el: "#root",
         data: {
@@ -47,7 +102,9 @@
           lastName: '',
           count: 0,
           show: false,
-          list: [1,2,3]
+          list: [1,2,3],
+          loveVue: false,
+          nestedValue: ''
         },
         methods: {
           handleClick : function(){
@@ -55,6 +112,9 @@
           },
           showClick: function(){
             this.show = !this.show;
+          },
+          focused() {
+            console.log('Input focus')
           }
         },
         computed: {
